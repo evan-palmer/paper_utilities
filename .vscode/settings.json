@@ -1,0 +1,44 @@
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash",
+      "args": ["-i"]
+    }
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "autoDocstring.startOnNewLine": false,
+  "autoDocstring.docstringFormat": "google-notypes",
+  "python.defaultInterpreterPath": "/home/ubuntu/.venv/paper_utilities/bin/python",
+  "python.autoComplete.extraPaths": [
+    "/home/ubuntu/.venv/paper_utilities/lib/python3.12/site-packages/",
+  ],
+  "python.analysis.extraPaths": [
+    "/home/ubuntu/.venv/paper_utilities/lib/python3.12/site-packages/",
+  ],
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.rulers": [90],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[markdown]": {
+    "editor.rulers": [90]
+  },
+  "[dockerfile]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+    "editor.tabSize": 4
+  },
+  "python.analysis.typeCheckingMode": "basic"
+}

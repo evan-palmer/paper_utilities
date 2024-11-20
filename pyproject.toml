@@ -1,0 +1,16 @@
+[build-system]
+requires = ["flit_core >=3.8.0,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "paper_utilities"
+version = "0.0.1"
+description = "A collection of utility functions that I use for writing academic papers"
+authors = [{ name = 'Evan Palmer', email = 'evanp922@gmail.com' }]
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "matplotlib"]
+
+[tool.ruff]
+line-length = 88
+target-version = 'py312'
+fix = true

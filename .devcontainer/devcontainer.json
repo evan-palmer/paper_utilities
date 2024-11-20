@@ -1,0 +1,19 @@
+{
+  "name": "Python 3",
+  "remoteUser": "ubuntu",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "workspaceFolder": "/home/ubuntu/paper_utilities",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/ubuntu/paper_utilities,type=bind",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "njpwerner.autodocstring",
+        "charliermarsh.ruff",
+        "ms-python.mypy-type-checker",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  }
+}
