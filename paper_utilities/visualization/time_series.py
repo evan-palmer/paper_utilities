@@ -91,15 +91,17 @@ def plot_time_series_from_array(
     title_fontsize: int = 16,
     display_border: bool = False,
     normalize_x: bool = True,
-    legend_labels: list[str] | None = None,
+    legend_label: str | list[str] | None = None,
+    show_legend: bool = True,
 ):
     """Plot time-series data.
 
     Args:
-        data: The data to plot, stored in a pandas DataFrame.
-        x: The column name of the x-axis data.
-        y: The column name of the y-axis data.
+        x: The x-axis data to plot.
+        y: The y-axis data to plot. This can be either a 1D or 2D array. If it is a 2D
+            array, use the axis parameter to specify which axis to plot over.
         ax: The matplotlib axis to plot on.
+        axis: The axis to plot over if y is a 2D array. Defaults to 0.
         xlabel: The x-axis label. Defaults to "Time (s)".
         ylabel: The y-axis label. Defaults to "Value".
         title: The plot title. Defaults to "".
@@ -116,6 +118,10 @@ def plot_time_series_from_array(
         normalize_x: Normalize the x-axis values. Defaults to True. This is useful when
             the x-axis values are timestamps, and you want to plot the data starting at
             zero.
+        legend_label: The label(s) for the legend. Defaults to None. If y is a 2D array,
+            this should be a list of labels for each line in the plot. If y is a 1D
+            array, this should be a single label for the plot.
+        show_legend: Show the legend on the plot. Defaults to True.
     """
     if normalize_x:
         x = x - x.min()
@@ -130,7 +136,7 @@ def plot_time_series_from_array(
                     color=color,
                     linestyle=linestyle,
                     linewidth=linewidth,
-                    label=legend_labels[i] if legend_labels is not None else None,
+                    label=legend_label[i] if isinstance(legend_label, list) else None,
                 )
         else:
             for i in range(y.shape[axis]):
@@ -141,20 +147,35 @@ def plot_time_series_from_array(
                     color=color[i],
                     linestyle=linestyle,
                     linewidth=linewidth,
-                    label=legend_labels[i] if legend_labels is not None else None,
+                    label=legend_label[i] if isinstance(legend_label, list) else None,
                 )
     else:
         if isinstance(color, str):
-            ax.plot(x, y, color=color, linestyle=linestyle, linewidth=linewidth)
+            ax.plot(
+                x,
+                y,
+                color=color,
+                linestyle=linestyle,
+                linewidth=linewidth,
+                label=legend_label,
+            )
         else:
-            ax.plot(x, y, color=color[0], linestyle=linestyle, linewidth=linewidth)
+            ax.plot(
+                x,
+                y,
+                color=color[0],
+                linestyle=linestyle,
+                linewidth=linewidth,
+                label=legend_label,
+            )
 
     # Set the labels
     ax.set_xlabel(xlabel, fontsize=fontsize)
     ax.set_ylabel(ylabel, fontsize=fontsize)
 
     # Set the legend position
-    ax.legend(loc=legend_position, framealpha=legend_alpha, fontsize=fontsize)
+    if show_legend:
+        ax.legend(loc=legend_position, framealpha=legend_alpha, fontsize=fontsize)
 
     # Use a GGPlot style
     ax.set_facecolor(ColorPalette.LIGHT_GREY)
