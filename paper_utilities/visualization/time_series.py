@@ -78,6 +78,7 @@ def plot_time_series_from_array(
     x: np.ndarray,
     y: np.ndarray,
     ax: plt.Axes,
+    axis: int = 0,
     xlabel: str = "Time (s)",
     ylabel: str = "Value",
     title: str = "",
@@ -119,8 +120,9 @@ def plot_time_series_from_array(
         x = x - x.min()
 
     if len(y.shape) > 1:
-        for row in y:
-            ax.plot(x, row, color=color, linestyle=linestyle, linewidth=linewidth)
+        for i in range(y.shape[axis]):
+            ys = y.take(i, axis)
+            ax.plot(x, ys, color=color, linestyle=linestyle, linewidth=linewidth)
     else:
         ax.plot(x, y, color=color, linestyle=linestyle, linewidth=linewidth)
 
