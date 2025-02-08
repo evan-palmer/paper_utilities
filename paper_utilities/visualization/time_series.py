@@ -91,6 +91,7 @@ def plot_time_series_from_array(
     title_fontsize: int = 16,
     display_border: bool = False,
     normalize_x: bool = True,
+    legend_labels: list[str] | None = None,
 ):
     """Plot time-series data.
 
@@ -123,11 +124,25 @@ def plot_time_series_from_array(
         if isinstance(color, str):
             for i in range(y.shape[axis]):
                 ys = y.take(i, axis)
-                ax.plot(x, ys, color=color, linestyle=linestyle, linewidth=linewidth)
+                ax.plot(
+                    x,
+                    ys,
+                    color=color,
+                    linestyle=linestyle,
+                    linewidth=linewidth,
+                    label=legend_labels[i] if legend_labels is not None else None,
+                )
         else:
             for i in range(y.shape[axis]):
                 ys = y.take(i, axis)
-                ax.plot(x, ys, color=color[i], linestyle=linestyle, linewidth=linewidth)
+                ax.plot(
+                    x,
+                    ys,
+                    color=color[i],
+                    linestyle=linestyle,
+                    linewidth=linewidth,
+                    label=legend_labels[i] if legend_labels is not None else None,
+                )
     else:
         if isinstance(color, str):
             ax.plot(x, y, color=color, linestyle=linestyle, linewidth=linewidth)
