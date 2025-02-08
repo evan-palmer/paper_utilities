@@ -120,11 +120,19 @@ def plot_time_series_from_array(
         x = x - x.min()
 
     if len(y.shape) > 1:
-        for i in range(y.shape[axis]):
-            ys = y.take(i, axis)
-            ax.plot(x, ys, color=color, linestyle=linestyle, linewidth=linewidth)
+        if isinstance(color, str):
+            for i in range(y.shape[axis]):
+                ys = y.take(i, axis)
+                ax.plot(x, ys, color=color, linestyle=linestyle, linewidth=linewidth)
+        else:
+            for i in range(y.shape[axis]):
+                ys = y.take(i, axis)
+                ax.plot(x, ys, color=color[i], linestyle=linestyle, linewidth=linewidth)
     else:
-        ax.plot(x, y, color=color, linestyle=linestyle, linewidth=linewidth)
+        if isinstance(color, str):
+            ax.plot(x, y, color=color, linestyle=linestyle, linewidth=linewidth)
+        else:
+            ax.plot(x, y, color=color[0], linestyle=linestyle, linewidth=linewidth)
 
     # Set the labels
     ax.set_xlabel(xlabel, fontsize=fontsize)
