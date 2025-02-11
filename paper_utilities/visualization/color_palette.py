@@ -9,5 +9,5 @@ class ColorPalette:
     GREEN = "#009E73"
     BRIGHT_YELLOW = "#F0E442"
     DARK_BLUE = "#0072B2"
-    VERMILLION = "#D55E00"
+    VERMILION = "#D55E00"
     PINK = "#CC79A7"
