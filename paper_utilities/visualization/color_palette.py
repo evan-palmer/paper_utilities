@@ -11,3 +11,4 @@ class ColorPalette:
     DARK_BLUE = "#0072B2"
     VERMILION = "#D55E00"
     PINK = "#CC79A7"
+    RED = "#FF0000"
