@@ -29,6 +29,7 @@ def generate_table_from_dataframe(
     data: pd.DataFrame,
     caption: str,
     label: str,
+    column_format: str,
     midrules: list[int] | None = None,
     precision: int = 2,
 ) -> str:
@@ -38,6 +39,7 @@ def generate_table_from_dataframe(
         data: The pandas DataFrame to use for the table.
         caption: The caption for the table.
         label: The label for the table, used for referencing in LaTeX.
+        column_format: The column format for the LaTeX table, e.g., "lccc".
         midrules: A list of row indices where a midrule should be inserted.
         precision: The number of decimal places to use for scientific notation.
 
@@ -52,7 +54,7 @@ def generate_table_from_dataframe(
 \begin{{table*}}[t]
 \centering
 \rowcolors{{2}}{{gray!20}}{{white}}
-\begin{{tabular}}{{{"l" + "c" * (len(columns) - 1)}}}
+\begin{{tabular}}{{{column_format}}}
     \toprule
     {header_row}
     \midrule
@@ -88,6 +90,7 @@ def generate_table_from_list(
     columns: list[str],
     caption: str,
     label: str,
+    column_format: str,
     midrules: list[int] | None = None,
     precision: int = 2,
 ) -> str:
@@ -101,6 +104,7 @@ def generate_table_from_list(
         columns: The table column names.
         caption: The caption for the table.
         label: The label for the table, used for referencing in LaTeX.
+        column_format: The column format for the LaTeX table, e.g., "lccc".
         midrules: A list of row indices where a midrule should be inserted.
         precision: The number of decimal places to use for scientific notation.
 
@@ -118,7 +122,7 @@ def generate_table_from_list(
 \begin{{table*}}[t]
 \centering
 \rowcolors{{2}}{{gray!20}}{{white}}
-\begin{{tabular}}{{{"l" + "c" * (len(columns) - 1)}}}
+\begin{{tabular}}{{{column_format}}}
     \toprule
     {header_row}
     \midrule
