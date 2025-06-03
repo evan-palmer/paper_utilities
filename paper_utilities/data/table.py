@@ -133,7 +133,7 @@ def generate_table_from_list(
     body = ""
     for i, row in enumerate(data):
         if midrules and i in midrules:
-            body += "    " + r"\midrule" + "\n"
+            body += "    " + r"\midrule" + "\n\n"
 
         formatted_row = []
         for col in row:
