@@ -5,16 +5,10 @@ academic papers, including methods to generate plots, analyze data, etc.
 
 ## Installation
 
-To install `paper_utilities`, first clone the project to your workspace
+`paper_utilities` can be installed using pip:
 
 ```bash
-git clone git@github.com:evan-palmer/paper_utilities.git
-```
-
-Then, from the `paper_utilities/` directory, install the package using
-
-```bash
-pip install .
+pip install git+https://github.com/evan-palmer/paper_utilities.git
 ```
 
 ## License
